@@ -9,13 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+  public function up(): void
 {
-    Schema::create('comments', function (Blueprint $table) {
+    Schema::create('books', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
-        $table->text('comment_text');
-        $table->string('author');
+        $table->text('title');
+        $table->text('author');
+        $table->integer('publication_year');
         $table->timestamps();
     });
 }
@@ -23,8 +23,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+   public function down(): void
 {
-    Schema::dropIfExists('comments');
+    Schema::dropIfExists('books');
 }
 };
